@@ -1,7 +1,10 @@
 package ClassModels;
 
 public class Connection {
-    private String name,url,user,pass;
+    private String name;
+    private String url;
+    private String user;
+    private String pass;
 
     public Connection() {}
 
