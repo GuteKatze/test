@@ -3,6 +3,7 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,32 +21,26 @@ public class WorkUnit {
             {
                 File file = fileopen.getSelectedFile();
                 FileInputStream fileInputStream = new FileInputStream(file);
-
+                Yaml yamlread = new Yaml();
+                Map<String, Object> data = yamlread.load(fileInputStream);
+                if (data == null)
                 {
-                    Yaml yamlread = new Yaml();
-                    Map<String, Object> data = yamlread.load(fileInputStream);
-                    if (data == null)
+                    JOptionPane.showMessageDialog(null, "Empty file selected");
+                } else
+                {
+                    for (Map.Entry<String, Object> s : data.entrySet())
                     {
-                        JOptionPane.showMessageDialog(null, "Empty file selected");
-                    }
-                    else
-                    {
-                        for (Map.Entry<String, Object> s : data.entrySet())
-                        {
-                            System.out.println(data);
-                        }
+                        System.out.println(data);
                     }
                 }
-
-
-
+            } catch (FileNotFoundException e)
+            {
+                throw new RuntimeException(e);
             }
-            catch (FileNotFoundException e)
+            catch (HeadlessException e)
             {
                 throw new RuntimeException(e);
             }
         }
-
-
     }
 }

@@ -1,9 +1,15 @@
 package ClassModels;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Connection {
+    @NotNull
     private String name;
+    @NotNull
     private String url;
+    @NotNull
     private String user;
+    @NotNull
     private String pass;
 
     public Connection() {}
