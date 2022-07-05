@@ -4,15 +4,13 @@ import org.jetbrains.annotations.NotNull;
 
 public class Connection {
     @NotNull
-    private String name;
+    private final String name;
     @NotNull
     private String url;
     @NotNull
     private String user;
     @NotNull
     private String pass;
-
-    public Connection() {}
 
     public Connection(String name, String url, String user, String pass) {
         this.name = name;
